@@ -41,14 +41,11 @@ func Read() (Config, error) {
 }
 
 func getConfigFilePath() (string, error) {
-	// Get the current working directory
-	cwd, err := os.Getwd()
+	home, err := os.UserHomeDir()
 	if err != nil {
 		return "", err
 	}
-
-	// Join the current directory with the config file name
-	fullPath := filepath.Join(cwd, configFileName)
+	fullPath := filepath.Join(home, configFileName)
 	return fullPath, nil
 }
 
